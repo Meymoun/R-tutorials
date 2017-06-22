@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\ncorr <- function(directory, threshold = 0, id = 1:332) {\n  \n  ## parse through files in directory that matches *csv\n  filelist <- Sys.glob(file.path(directory, \"*csv\"))\n\n  ## save correlation values in vector\n  correlations <- numeric()\n  \n  for (i in id) {\n    \n    ## access file by index\n    ff <- read.csv(filelist[i])\n    \n    ## identify rows with 4 non-missing values, can I use something else? \n    #not_na <- (rowSums(!is.na(ff)) == 4)\n    \n    ## returns object with incomplete cases (rows containing NAs) removed\n    ## gives the same result as with not_na and the facit\n    complete_observations <- na.omit(ff)\n    \n    #complete_observations <- (ff[not_na,])\n    \n    no_rows <- (nrow(complete_observations))\n    \n    if (no_rows > threshold) {\n      \n        nitrate <- numeric()\n        sulfate <- numeric()\n      \n        nitrate <- c(nitrate, complete_observations[, \"nitrate\"])\n        sulfate <- c(sulfate, complete_observations[, \"sulfate\"])\n        \n        corr <- cor(nitrate, sulfate)\n        \n        correlations <- c(correlations, corr)\n    \n        \n        }\n    \n    \n    }\n  \n\n  correlations\n  \n  \n}\n\n\ncr <- corr(\"specdata\", 400)\nhead(cr)\nsummary(cr)",
+    "created" : 1498052862317.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3242296505",
+    "id" : "86E64AFC",
+    "lastKnownWriteTime" : 1498054888,
+    "last_content_update" : 1498054888863,
+    "path" : "~/Summer project/Coursera/coursera_assignment1.3.R",
+    "project_path" : "coursera_assignment1.3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

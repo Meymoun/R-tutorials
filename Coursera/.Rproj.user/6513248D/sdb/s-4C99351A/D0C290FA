@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# files in specdata contain 3 variables:\n# Date: the date of the observation in YYYY-MM-DD format (year-month-day)\n# sulfate: the level of sulfate PM in the air on that date (measured in micrograms per cubic meter)\n# nitrate: the level of nitrate PM in the air on that date (measured in micrograms per cubic meter)\n\n\npollutantmean <- function(directory, pollutant, id = 1:332) {\n  \n    ## parse through files in directory that matches *csv\n    filelist <- Sys.glob(file.path(directory, \"*csv\"))\n\n    \n    a <- numeric()\n    \n    for (i in id) {\n      \n        ## access file by index\n        ff <- read.csv(filelist[i])\n        \n        \n        ## each row in column 'pollutant'\n        pollutant_values <- ff[,pollutant]\n        \n        ## logical vector, non-NA = TRUE\n        select <- !is.na(pollutant_values)\n        \n        # only logical vector with 1 or more TRUE (remove only NA columns)\n        select <- select > 0\n        \n        ## select non-NA values\n        values <- as.numeric(pollutant_values[select])\n       \n        a <- c(a, values)\n        \n        \n        }\n\n    \n    print (mean(a))\n\n    }\n    \n\n#pollutantmean(\"specdata\", \"sulfate\", 1:10)\n## coursera facit: [1] 4.064128\n\n#pollutantmean('specdata', 'nitrate', 70:72)\n## coursera facit: [1] 1.706047\n\n#pollutantmean(\"specdata\", \"nitrate\", 23)\n## coursera facit: [1] 1.280833\n\n\n",
+    "created" : 1498035556352.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3849943246",
+    "id" : "D0C290FA",
+    "lastKnownWriteTime" : 1498045115,
+    "last_content_update" : 1498045115653,
+    "path" : "~/Summer project/Coursera/coursera_assignment1.1.R",
+    "project_path" : "coursera_assignment1.1.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
