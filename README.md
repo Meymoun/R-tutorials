@@ -6,14 +6,18 @@ The scripts from the exercises in the Coursera and in the Bioconductor tutorials
 
 ## Datacamp
 ### Introduction to R
+- Vector, list, matrix and dataframe management
 
 ## Sitepoint 
 ### Introduction to R and R studio
+- Vector, list, matrix and dataframe management
+- Logical operators, classes
 
 ## Swirl
 ### R programming
 ### Data analysis
-### Getting and cleaning data - dplyr and tidyr
+### Getting and cleaning data
+- dplyr and tidyr
 
 ## Coursera
 
